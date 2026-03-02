@@ -27,10 +27,6 @@ int call_queue(Queue* pq);
 
 void call_and_print(Queue* pq);
 
-void skip_right(int* ctrl, int lim);
-
-void skip_left(int* ctrl, int lim);
-
 bool is_empty(Queue q);
 
 bool is_full(Queue q);
