@@ -6,23 +6,16 @@ int main(){
 	Queue q;
 	init_queue(&q, 10);
 	
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < 13; i++){
 		put_in_queue(&q, i);
 	}
 	
-	for(int i = 0; i < 4; i++){
-		printf("%d ", call_queue(&q));
-	}
-	printf("\n");
+	call_and_print(&q);
 	
-	for(int i = 0; i < 4; i++){
-		put_in_queue(&q, i);
-	}
+	put_in_queue(&q, 37);
 	
-	for(int i = 0; i < 10; i++){
-		printf("%d ", call_queue(&q));
-	}
-	printf("\n");
+	call_and_print(&q);
+	call_and_print(&q);
 	
 	delete_queue(&q);
 	

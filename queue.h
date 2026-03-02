@@ -3,7 +3,9 @@
 
 #include <stdbool.h>
 
-//Comments, next_idx(), call_and_print
+//Macro operator that finds the next index   
+//based on a set limit and a circular behaviour.
+#define NEXT(i) (( (i) == lim )? 0 : (i) + 1) 
 
 typedef struct{
 	int* data;
@@ -22,6 +24,8 @@ void empty_queue(Queue* pq);
 void put_in_queue(Queue* pq, int num);
 
 int call_queue(Queue* pq);
+
+void call_and_print(Queue* pq);
 
 void skip_right(int* ctrl, int lim);
 

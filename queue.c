@@ -34,7 +34,7 @@ void put_in_queue(Queue* pq, int num){
 		return;
 	
 	int lim = pq->size - 1;
-	skip_right(&(pq->end), lim);
+	pq->end = NEXT(pq->end);
 	
 	pq->data[pq->end] = num;
 }
@@ -48,10 +48,29 @@ int call_queue(Queue* pq){
 	
 	int num = pq->data[pq->start];
 	
+	if(pq->start == pq->end){
+		empty_queue(pq);
+		return num;
+	}
+	
 	int lim = pq->size - 1;
-	skip_right(&(pq->start), lim);
+	pq->start = NEXT(pq->start);
 	
 	return num;
+}
+
+void call_and_print(Queue* pq){
+	
+	if(is_empty(*pq)){
+		printf("Queue is empty\n");
+		return;
+	}
+	
+	while(!is_empty(*pq)){
+		
+		printf("%d ", call_queue(pq));
+	}
+	printf("\n");
 }
 
 void empty_queue(Queue* pq){
@@ -59,22 +78,12 @@ void empty_queue(Queue* pq){
 	pq->end = -1;
 }
 
-void skip_right(int* ctrl, int lim){
-	*ctrl = (*ctrl == lim)? 0 : *ctrl + 1;
-}
-
-void skip_left(int* ctrl, int lim){
-	*ctrl = (*ctrl == 0)? lim : *ctrl - 1;
-}
-
 bool is_empty(Queue q){
 	return (q.start == -1)? true : false;
 }
 
 bool is_full(Queue q){
-	int lim = q.size - 1;
-	int temp = q.end;
-	skip_right(&temp, lim);
 	
-	return (temp == q.start)? true : false;
+	int lim = q.size - 1;
+	return (NEXT(q.end) == q.start)? true : false;
 }

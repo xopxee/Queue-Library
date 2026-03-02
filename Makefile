@@ -3,7 +3,7 @@ LDFLAGS =
 TARGET = main
 HEADERS = queue.h
 SOURCES = main.c queue.c
-DEPENDENCIES = $(HEADERS) $(SORCES)
+DEPENDENCIES = $(HEADERS) $(SOURCES)
 
 all: $(TARGET)
 
