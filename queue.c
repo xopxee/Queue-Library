@@ -22,7 +22,7 @@ void delete_queue(Queue* pq){
 
 void put_in_queue(Queue* pq, int num){
 	
-	if(is_empty(*pq)){
+	if(is_empty_q(*pq)){
 		pq->data[0] = num;
 		pq->start = 0;
 		pq->end = 0;
@@ -30,7 +30,7 @@ void put_in_queue(Queue* pq, int num){
 		return;
 	}
 	
-	if(is_full(*pq))
+	if(is_full_q(*pq))
 		return;
 	
 	int lim = pq->size - 1;
@@ -41,7 +41,7 @@ void put_in_queue(Queue* pq, int num){
 
 int call_queue(Queue* pq){
 	
-	if(is_empty(*pq)){
+	if(is_empty_q(*pq)){
 		perror("Unable to retrieve value from empty queue");
 		exit(1);
 	}
@@ -61,12 +61,12 @@ int call_queue(Queue* pq){
 
 void call_and_print(Queue* pq){
 	
-	if(is_empty(*pq)){
+	if(is_empty_q(*pq)){
 		printf("Queue is empty\n");
 		return;
 	}
 	
-	while(!is_empty(*pq)){
+	while(!is_empty_q(*pq)){
 		
 		printf("%d ", call_queue(pq));
 	}
@@ -78,11 +78,11 @@ void empty_queue(Queue* pq){
 	pq->end = -1;
 }
 
-bool is_empty(Queue q){
+bool is_empty_q(Queue q){
 	return (q.start == -1)? true : false;
 }
 
-bool is_full(Queue q){
+bool is_full_q(Queue q){
 	
 	int lim = q.size - 1;
 	return (NEXT(q.end) == q.start)? true : false;

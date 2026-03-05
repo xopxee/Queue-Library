@@ -27,8 +27,8 @@ int call_queue(Queue* pq);
 
 void call_and_print(Queue* pq);
 
-bool is_empty(Queue q);
+bool is_empty_q(Queue q);
 
-bool is_full(Queue q);
+bool is_full_q(Queue q);
 
 #endif
